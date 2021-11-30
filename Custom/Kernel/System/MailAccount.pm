@@ -4,7 +4,7 @@
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
 # Copyright (C) 2019-2021 Rother OSS GmbH, https://otobo.de/
 # --
-# $origin: otobo - b1c1ab35d59104476ebde772a12c7f3cd36e5211 - Kernel/System/MailAccount.pm
+# $origin: otobo - ab48db8670db9688873202f8d2fd347ce08596a6 - Kernel/System/MailAccount.pm
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -28,7 +28,9 @@ our @ObjectDependencies = (
     'Kernel::System::Main',
     'Kernel::System::Valid',
     'Kernel::System::Cache',
+# Rother OSS / eyazi@efflux / MailAccount-OAuth2
     'Kernel::System::OAuth2::MailAccount',
+# EO MailAccount-OAuth2
 );
 
 =head1 NAME
@@ -644,9 +646,7 @@ sub MailAccountFetch {
     my $GenericModule = "Kernel::System::MailAccount::$Param{Type}";
 
     # try to load module $GenericModule
-    if ( !$Kernel::OM->Get('Kernel::System::Main')->Require($GenericModule) ) {
-        return;
-    }
+    return unless $Kernel::OM->Get('Kernel::System::Main')->Require($GenericModule);
 
     # fetch mails
     my $Backend = $GenericModule->new();

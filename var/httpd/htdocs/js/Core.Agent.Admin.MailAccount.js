@@ -4,6 +4,8 @@
 // Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
 // Copyright (C) 2019-2021 Rother OSS GmbH, https://otobo.de/
 // --
+// $origin: otobo - eaafbcf14a45d967ce10948ca73bf4c8dc464575 - var/httpd/htdocs/js/Core.Agent.Admin.MailAccount.js
+// --
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
 // Foundation, either version 3 of the License, or (at your option) any later version.
