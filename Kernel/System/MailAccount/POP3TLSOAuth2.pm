@@ -15,7 +15,7 @@
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 # --
 
-package Kernel::System::MailAccount::POP3OAuth2;
+package Kernel::System::MailAccount::POP3TLSOAuth2;
 
 use strict;
 use warnings;
@@ -52,7 +52,7 @@ sub Connect {
         }
     }
 
-    my $Type = 'POP3OAuth2';
+    my $Type = 'POP3TLSOAuth2';
 
     # connect to host
     my $PopObject = Net::POP3->new(
