@@ -14,7 +14,7 @@
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 # --
 
-package Kernel::System::MailAccount::IMAPS;
+package Kernel::System::MailAccount::IMAPSOAuth2;
 
 use strict;
 use warnings;
@@ -56,7 +56,7 @@ sub Connect {
         );
     }
 
-    my $Type = 'IMAPSOAUTH2';
+    my $Type = 'IMAPSOAuth2';
 
     # connect to host
     my $IMAPObject = Net::IMAP::Simple->new(
@@ -77,7 +77,8 @@ sub Connect {
 
     # Auth via SASL XOAUTH2.
     my $SASLXOAUTH2 = encode_base64( 'user=' . $Param{Login} . "\x01auth=Bearer " . $AccessToken . "\x01\x01" );
-    $IMAPObject->authenticate( 'XOAUTH2', sub { return $SASLXOAUTH2 } );
+    $IMAPObject->authenticate( 'XOAUTH2', sub { 
+return $SASLXOAUTH2 } );
 
     if ( !$IMAPObject || !$IMAPObject->IsAuthenticated() ) {
         return (
