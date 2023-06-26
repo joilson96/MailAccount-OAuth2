@@ -72,7 +72,7 @@ sub Connect {
     my $Socket = IO::Socket::SSL->new(  
        PeerAddr => $Param{Host},  
        PeerPort => 993,
-       SSL_verify_mode => SSL_VERIFY_NONE
+       SSL_verify_mode => 0,
     );
 
     if ( !$Socket ) {
