@@ -22,6 +22,7 @@ use warnings;
 
 use Mail::IMAPClient;
 use MIME::Base64;
+use IO::Socket::SSL;
 
 use Kernel::System::PostMaster;
 
@@ -68,11 +69,25 @@ sub Connect {
     }
 
     # connect to host
+    my $Socket = IO::Socket::SSL->new(  
+       PeerAddr => $Param{Host},  
+       PeerPort => 993,
+       SSL_verify_mode => SSL_VERIFY_NONE
+    );
+
+    if ( !$Socket ) {
+        return (
+            Successful => 0,
+            Message    => "IMAPOAuth2: Can't open a socket for $Param{Host}: $@\n"
+        );
+    }
+
     my $IMAPObject = Mail::IMAPClient->new(
         Server   => $Param{Host},
         Starttls => [ SSL_verify_mode => 0 ],
         Debug    => $Param{Debug},
         Uid      => 1,
+        Socket   => $Socket,
 
         # see bug#8791: needed for some Microsoft Exchange backends
         Ignoresizeerrors => 1,
