@@ -15,7 +15,7 @@
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 # --
 
-package Kernel::System::MailAccount::IMAPTLSOAuth2;
+package Kernel::System::MailAccount::IMAPOAuth2;
 
 use strict;
 use warnings;
@@ -63,7 +63,7 @@ sub Connect {
     if ( !$AccessToken ) {
         return (
             Successful => 0,
-            Message    => "IMAPTLSOAuth2: Could not request access token for $Param{Login}/$Param{Host}'. The refresh token could be expired or invalid."
+            Message    => "IMAPOAuth2: Could not request access token for $Param{Login}/$Param{Host}'. The refresh token could be expired or invalid."
         );
     }
 
@@ -85,7 +85,7 @@ sub Connect {
     if ( !$IMAPObject || !$IMAPObject->IsAuthenticated() ) {
         return (
             Successful => 0,
-            Message    => "IMAPTLSOAuth2: Can't connect to $Param{Host}: $@\n"
+            Message    => "IMAPOAuth2: Can't connect to $Param{Host}: $@\n"
         );
     }
 
@@ -146,7 +146,7 @@ sub _Fetch {
             $CommunicationLogObject->ObjectLog(
                 ObjectLogType => 'Connection',
                 Priority      => 'Error',
-                Key           => 'Kernel::System::MailAccount::IMAPTLSOAuth2',
+                Key           => 'Kernel::System::MailAccount::IMAPOAuth2',
                 Value         => "$_ not defined!",
             );
 
@@ -164,7 +164,7 @@ sub _Fetch {
             $CommunicationLogObject->ObjectLog(
                 ObjectLogType => 'Connection',
                 Priority      => 'Error',
-                Key           => 'Kernel::System::MailAccount::IMAPTLSOAuth2',
+                Key           => 'Kernel::System::MailAccount::IMAPOAuth2',
                 Value         => "Need $_!",
             );
 
@@ -194,14 +194,14 @@ sub _Fetch {
 
     my $Timeout      = 60;
     my $FetchCounter = 0;
-    my $AuthType     = 'IMAPTLSOAuth2';
+    my $AuthType     = 'IMAPOAuth2';
 
     $Self->{Reconnect} = 0;
 
     $CommunicationLogObject->ObjectLog(
         ObjectLogType => 'Connection',
         Priority      => 'Debug',
-        Key           => 'Kernel::System::MailAccount::IMAPTLSOAuth2',
+        Key           => 'Kernel::System::MailAccount::IMAPOAuth2',
         Value         => "Open connection to '$Param{Host}' ($Param{Login}).",
     );
 
@@ -220,7 +220,7 @@ sub _Fetch {
         %Connect = (
             Successful => 0,
             Message    =>
-                "Something went wrong while trying to connect to 'IMAPTLSOAuth2 => $Param{Login}/$Param{Host}': ${ Error }",
+                "Something went wrong while trying to connect to 'IMAPOAuth2 => $Param{Login}/$Param{Host}': ${ Error }",
         );
     };
 
@@ -228,7 +228,7 @@ sub _Fetch {
         $CommunicationLogObject->ObjectLog(
             ObjectLogType => 'Connection',
             Priority      => 'Error',
-            Key           => 'Kernel::System::MailAccount::IMAPTLSOAuth2',
+            Key           => 'Kernel::System::MailAccount::IMAPOAuth2',
             Value         => $Connect{Message},
         );
 
@@ -265,7 +265,7 @@ sub _Fetch {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
                 Message  => sprintf(
-                    "Error while executing 'IMAPTLSOAuth2->%s(%s)': %s",
+                    "Error while executing 'IMAPOAuth2->%s(%s)': %s",
                     $Operation,
                     join( ',', @Params ),
                     $Error,
@@ -300,7 +300,7 @@ sub _Fetch {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'error',
             Message  => sprintf(
-                "Error while retrieving the messages 'IMAPTLSOAuth2': %s",
+                "Error while retrieving the messages 'IMAPOAuth2': %s",
                 $Error,
             ),
         );
@@ -341,7 +341,7 @@ sub _Fetch {
                 $CommunicationLogObject->ObjectLog(
                     ObjectLogType => 'Connection',
                     Priority      => 'Error',
-                    Key           => 'Kernel::System::MailAccount::IMAPTLSOAuth2',
+                    Key           => 'Kernel::System::MailAccount::IMAPOAuth2',
                     Value         => $ErrorMessage,
                 );
 
@@ -363,7 +363,7 @@ sub _Fetch {
                 $CommunicationLogObject->ObjectLog(
                     ObjectLogType => 'Connection',
                     Priority      => 'Error',
-                    Key           => 'Kernel::System::MailAccount::IMAPTLSOAuth2',
+                    Key           => 'Kernel::System::MailAccount::IMAPOAuth2',
                     Value         => $ErrorMessage,
                 );
 
@@ -387,7 +387,7 @@ sub _Fetch {
                     $CommunicationLogObject->ObjectLog(
                         ObjectLogType => 'Connection',
                         Priority      => 'Error',
-                        Key           => 'Kernel::System::MailAccount::IMAPTLSOAuth2',
+                        Key           => 'Kernel::System::MailAccount::IMAPOAuth2',
                         Value         => $ErrorMessage,
                     );
 
@@ -397,7 +397,7 @@ sub _Fetch {
                     $CommunicationLogObject->ObjectLog(
                         ObjectLogType => 'Connection',
                         Priority      => 'Debug',
-                        Key           => 'Kernel::System::MailAccount::IMAPTLSOAuth2',
+                        Key           => 'Kernel::System::MailAccount::IMAPOAuth2',
                         Value         => "Message '$Messageno' successfully received from server.",
                     );
 
@@ -436,7 +436,7 @@ sub _Fetch {
                         $CommunicationLogObject->ObjectLog(
                             ObjectLogType => 'Connection',
                             Priority      => 'Error',
-                            Key           => 'Kernel::System::MailAccount::IMAPTLSOAuth2',
+                            Key           => 'Kernel::System::MailAccount::IMAPOAuth2',
                             Value         => $ErrorMessage,
                         );
 
@@ -471,7 +471,7 @@ sub _Fetch {
         $CommunicationLogObject->ObjectLog(
             ObjectLogType => 'Connection',
             Priority      => 'Info',
-            Key           => 'Kernel::System::MailAccount::IMAPTLSOAuth2',
+            Key           => 'Kernel::System::MailAccount::IMAPOAuth2',
             Value         => "$AuthType: Fetched $FetchCounter email(s) from $Param{Login}/$Param{Host}.",
         );
     }

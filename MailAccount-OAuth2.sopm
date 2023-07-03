@@ -15,25 +15,13 @@
         <File Permission="660" Location="Custom/Kernel/System/MailAccount/POP3.pm" />
         <File Permission="660" Location="Kernel/Config/Files/XML/MailAccountOAuth2.xml" />
         <File Permission="660" Location="Kernel/Language/de_MailAccountOAuth2.pm" />
-        <File Permission="660" Location="Kernel/System/MailAccount/IMAPTLSOAuth2.pm" />
-        <File Permission="660" Location="Kernel/System/MailAccount/POP3TLSOAuth2.pm" />
-        <File Permission="660" Location="Kernel/System/MailAccount/IMAPSOAuth2.pm" />
-        <File Permission="660" Location="Kernel/System/MailAccount/POP3SOAuth2.pm" />
+        <File Permission="660" Location="Kernel/System/MailAccount/IMAPOAuth2.pm" />
+        <File Permission="660" Location="Kernel/System/MailAccount/POP3OAuth2.pm" />
         <File Permission="660" Location="Kernel/System/OAuth2/MailAccount.pm" />
         <File Permission="660" Location="Kernel/System/OAuth2.pm" />
         <File Permission="660" Location="doc/en/Mailaccount-OAuth2.pdf" />
         <File Permission="660" Location="var/httpd/htdocs/js/Core.Agent.Admin.MailAccount.js" />
     </Filelist>
-    <CodeUpgrade Version="10.1.2"><![CDATA[
-    $Kernel::OM->Get('Kernel::System::Log')->Log(
-        Priority => 'notice',
-        Message => "Move Type IMAPOAuth2 and POP3OAuth2 to IMAPTLSOAuth2 and POP3TLSOAuth2!",
-    );
-
-    $Kernel::OM->Get('Kernel::System::DB')->Do(SQL => "UPDATE auth_token SET account_type='IMAPTLSOAuth2' WHERE account_type='IMAPOAuth2'");
-    $Kernel::OM->Get('Kernel::System::DB')->Do(SQL => "UPDATE auth_token SET account_type='IMAPTLSOAuth2' WHERE account_type='IMAPOAuth2'");
- 
-    ]]></CodeUpgrade>
     <DatabaseInstall Type="post">
         <TableAlter Name="mail_account">
             <ColumnAdd Default="0" Name="oauth2_profile" Required="false" Size="45" Type="VARCHAR"></ColumnAdd>
