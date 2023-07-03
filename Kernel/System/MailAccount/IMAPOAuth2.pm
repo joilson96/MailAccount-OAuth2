@@ -431,7 +431,7 @@ sub _Fetch {
                         my $File  = $Self->_ProcessFailed( Email => $Message );
 
                         my $ErrorMessage = "$AuthType: Can't process mail, see log sub system ("
-                            . "$File, report it on https://github.com/RotherOSS/otobo/issues)!";
+                            . "$File, report it on https://github.com/RotherOSS/MailAccount-OAuth2/issues)!";
 
                         $CommunicationLogObject->ObjectLog(
                             ObjectLogType => 'Connection',
