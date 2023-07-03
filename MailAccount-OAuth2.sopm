@@ -24,7 +24,7 @@
         <File Permission="660" Location="doc/en/Mailaccount-OAuth2.pdf" />
         <File Permission="660" Location="var/httpd/htdocs/js/Core.Agent.Admin.MailAccount.js" />
     </Filelist>
-    <CodeUpgrade Version="10.1.1"><![CDATA[
+    <CodeUpgrade Version="10.1.2"><![CDATA[
     $Kernel::OM->Get('Kernel::System::Log')->Log(
         Priority => 'notice',
         Message => "Move Type IMAPOAuth2 and POP3OAuth2 to IMAPSOAuth2 and POP3SOAuth2!",
