@@ -30,8 +30,8 @@
         Message => "Move Type IMAPOAuth2 and POP3OAuth2 to IMAPSOAuth2 and POP3SOAuth2!",
     );
 
-    $Kernel::OM->Get('Kernel::System::DB')->Do(SQL => "UPDATE mail_account SET account_type='IMAPSOAuth2' WHERE account_type='IMAPOAuth2'");
-    $Kernel::OM->Get('Kernel::System::DB')->Do(SQL => "UPDATE mail_account SET account_type='POP3SSOAuth2' WHERE account_type='POP3OAuth2'");
+    $Kernel::OM->Get('Kernel::System::DB')->Do(SQL => "UPDATE auth_token SET account_type='IMAPSOAuth2' WHERE account_type='IMAPOAuth2'");
+    $Kernel::OM->Get('Kernel::System::DB')->Do(SQL => "UPDATE auth_token SET account_type='POP3SSOAuth2' WHERE account_type='POP3OAuth2'");
  
     ]]></CodeUpgrade>
     <DatabaseInstall Type="post">
