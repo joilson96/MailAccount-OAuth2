@@ -70,7 +70,7 @@ sub Connect {
     # connect to host
     my $IMAPObject = Mail::IMAPClient->new(
         Server   => $Param{Host},
-        Starttls => [ SSL_verify_mode => 0 ],
+        Ssl      => 1,
         Debug    => $Param{Debug},
         Uid      => 1,
 
