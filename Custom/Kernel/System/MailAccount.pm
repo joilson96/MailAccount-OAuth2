@@ -64,6 +64,10 @@ sub new {
     return $Self;
 }
 
+# Rother OSS / MailAccount-OAuth2
+=for stopwords OSS EO
+
+# EO MailAccount-OAuth2
 =head2 MailAccountAdd()
 
 adds a new mail account
