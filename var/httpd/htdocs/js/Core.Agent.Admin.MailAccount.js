@@ -2,9 +2,9 @@
 // OTOBO is a web-based ticketing system for service organisations.
 // --
 // Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-// Copyright (C) 2019-2021 Rother OSS GmbH, https://otobo.de/
+// Copyright (C) 2019-2024 Rother OSS GmbH, https://otobo.de/
 // --
-// $origin: otobo - eaafbcf14a45d967ce10948ca73bf4c8dc464575 - var/httpd/htdocs/js/Core.Agent.Admin.MailAccount.js
+// $origin: otobo - 832ee2673bb1ffd0e4c2ecd2de3f8609aa49147b - var/httpd/htdocs/js/Core.Agent.Admin.MailAccount.js
 // --
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -142,6 +142,12 @@ Core.Agent.Admin = Core.Agent.Admin || {};
         }).trigger('change');
 
         Core.UI.Table.InitTableFilter($("#FilterMailAccounts"), $("#MailAccounts"));
+
+        // init checkbox to include invalid elements
+        $('input#IncludeInvalid').off('change').on('change', function () {
+            var URL = Core.Config.Get("Baselink") + 'Action=' + Core.Config.Get("Action") + ';IncludeInvalid=' + ( $(this).is(':checked') ? 1 : 0 );
+            window.location.href = URL;
+        });
 
         TargetNS.MailAccountDelete();
     };

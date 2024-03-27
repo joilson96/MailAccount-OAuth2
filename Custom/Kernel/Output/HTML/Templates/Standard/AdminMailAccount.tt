@@ -2,9 +2,9 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2021 Rother OSS GmbH, https://otobo.de/
+# Copyright (C) 2019-2024 Rother OSS GmbH, https://otobo.de/
 # --
-# $origin: otobo - eaafbcf14a45d967ce10948ca73bf4c8dc464575 - Kernel/Output/HTML/Templates/Standard/AdminMailAccount.tt
+# $origin: otobo - 64d95578480e81261eefac7e2fc1c7686ee79038 - Kernel/Output/HTML/Templates/Standard/AdminMailAccount.tt
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -41,6 +41,17 @@
     <div class="Clear"></div>
     <div class="SidebarColumn">
 
+[% RenderBlockStart("IncludeInvalid") %]
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2>[% Translate("Filter by valid state") | html %]</h2>
+            </div>
+            <div class="Content">
+                <input type="checkbox" id="IncludeInvalid" name="IncludeInvalid" value="1" title="[% Translate("Include invalid Mail Accounts") | html %]" [% Data.IncludeInvalidChecked | html %]/>
+                <label for="IncludeInvalid">[% Translate("Include invalid Mail Accounts") | html %]</label>
+            </div>
+        </div>
+[% RenderBlockEnd("IncludeInvalid") %]
 [% RenderBlockStart("ActionList") %]
         <div class="WidgetSimple">
             <div class="Header">

@@ -2,9 +2,9 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
-# Copyright (C) 2019-2021 Rother OSS GmbH, https://otobo.de/
+# Copyright (C) 2019-2024 Rother OSS GmbH, https://otobo.de/
 # --
-# $origin: otobo - 668121ab28c3da98d01f71b0ec03c0d8c98e9885 - Kernel/System/MailAccount/POP3.pm
+# $origin: otobo - 55126f4ab25373dded7533aeb0d7cd7743e7e7a9 - Kernel/System/MailAccount/POP3.pm
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -474,6 +474,12 @@ sub Fetch {
             if ($CMD) {
                 print "\n";
             }
+
+            # Discarding ticket object to enable triggering of
+            # ticket events even in case of mail server timeout
+            $Kernel::OM->ObjectsDiscard(
+                Objects => ['Kernel::System::Ticket'],
+            );
         }
     }
 
