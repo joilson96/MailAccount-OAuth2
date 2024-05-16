@@ -1,0 +1,170 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2024 Rother OSS GmbH, https://otobo.de/
+# This file is distributed under the same license as the OTOBO Installation
+# Guide package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: OTOBO Installation Guide rel-11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-16 10:15+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.4.0\n"
+
+#: ../../content/index.rst:16
+msgid "Sacrifice to Sphinx"
+msgstr ""
+
+#: ../../content/index.rst:19
+msgid "Description"
+msgstr ""
+
+#: ../../content/index.rst:20
+msgid ""
+"Enables receiving emails (IMAP and POP3) via OAuth 2.0 authorization (RFC"
+" 6749)."
+msgstr ""
+
+#: ../../content/index.rst:23
+msgid "System requirements"
+msgstr ""
+
+#: ../../content/index.rst:26
+msgid "Framework"
+msgstr ""
+
+#: ../../content/index.rst:27
+msgid "OTOBO 11.0.x"
+msgstr ""
+
+#: ../../content/index.rst:30
+msgid "Packages"
+msgstr ""
+
+#: ../../content/index.rst:31 ../../content/index.rst:35
+msgid "\\-"
+msgstr ""
+
+#: ../../content/index.rst:34
+msgid "Third-party software"
+msgstr ""
+
+#: ../../content/index.rst:38
+msgid "Usage"
+msgstr ""
+
+#: ../../content/index.rst:41
+msgid "Setup"
+msgstr ""
+
+#: ../../content/index.rst:44
+msgid "Configuration Reference"
+msgstr ""
+
+#: ../../content/index.rst:47
+msgid "Core::Email::OAuth2"
+msgstr ""
+
+#: ../../content/index.rst:50
+msgid "OAuth2::MailAccount::Profiles###Custom3"
+msgstr ""
+
+#: ../../content/index.rst:51 ../../content/index.rst:67
+#: ../../content/index.rst:79
+msgid ""
+"Configure custom OAuth 2 application profiles. \"Name\" should be unique "
+"and will be displayed on the Mail Account Management screen. "
+"\"ProviderName\" can be \"MicrosoftAzure\", \"GoogleWorkspace\" or a "
+"custom provider like \"Custom1\" (see OAuth2::MailAccount::Providers)."
+msgstr ""
+
+#: ../../content/index.rst:54
+msgid "OAuth2::MailAccount::Providers###MicrosoftAzure"
+msgstr ""
+
+#: ../../content/index.rst:55
+msgid "Authorization server settings for Microsoft Azure/Microsoft 365."
+msgstr ""
+
+#: ../../content/index.rst:58
+msgid "OAuth2::MailAccount::Providers###Custom3"
+msgstr ""
+
+#: ../../content/index.rst:59 ../../content/index.rst:63
+#: ../../content/index.rst:71
+msgid "Custom authorization server settings."
+msgstr ""
+
+#: ../../content/index.rst:62
+msgid "OAuth2::MailAccount::Providers###Custom2"
+msgstr ""
+
+#: ../../content/index.rst:66
+msgid "OAuth2::MailAccount::Profiles###Custom1"
+msgstr ""
+
+#: ../../content/index.rst:70
+msgid "OAuth2::MailAccount::Providers###Custom1"
+msgstr ""
+
+#: ../../content/index.rst:74
+msgid "OAuth2::MailAccount::Providers###GoogleWorkspace"
+msgstr ""
+
+#: ../../content/index.rst:75
+msgid "Authorization server settings for Google Workspace."
+msgstr ""
+
+#: ../../content/index.rst:78
+msgid "OAuth2::MailAccount::Profiles###Custom2"
+msgstr ""
+
+#: ../../content/index.rst:82
+msgid "Core::OAuth2"
+msgstr ""
+
+#: ../../content/index.rst:85
+msgid "OAuth2::Settings"
+msgstr ""
+
+#: ../../content/index.rst:86
+msgid "General OAuth2 settings. TTL in seconds."
+msgstr ""
+
+#: ../../content/index.rst:89
+msgid "About"
+msgstr ""
+
+#: ../../content/index.rst:92
+msgid "Contact"
+msgstr ""
+
+#: ../../content/index.rst:93
+msgid "Rother OSS GmbH"
+msgstr ""
+
+#: ../../content/index.rst:94
+msgid "Email: hello@otobo.de"
+msgstr ""
+
+#: ../../content/index.rst:95
+msgid "Web: https://otobo.de"
+msgstr ""
+
+#: ../../content/index.rst:98
+msgid "Version"
+msgstr ""
+
+#: ../../content/index.rst:99
+msgid ""
+"Author: |doc-vendor| / Version: |doc-version| / Date of release: |doc-"
+"datestamp|"
+msgstr ""
+
