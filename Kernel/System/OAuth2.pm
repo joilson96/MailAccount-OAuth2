@@ -181,7 +181,7 @@ sub _RequestAccessToken {
         $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
         my $SQL = "SELECT token FROM $Self->{TokenTable} WHERE "
-            . "account_type = LOWER(?) AND account_id = ? AND token_type = 'refresh'";
+            . "account_type = ? AND account_id = ? AND token_type = 'refresh'";
 
         return if !$DBObject->Prepare(
             SQL   => $SQL,
@@ -254,7 +254,7 @@ sub _RequestAccessToken {
         # delete old data
         return if !$DBObject->Do(
             SQL => "DELETE FROM $Self->{TokenTable} WHERE "
-                . "account_type = LOWER(?) AND account_id = ? AND token_type = 'refresh'",
+                . "account_type = ? AND account_id = ? AND token_type = 'refresh'",
             Bind => [ \$Param{AccountType}, \$Param{AccountID} ],
         );
 
