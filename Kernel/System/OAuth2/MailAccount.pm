@@ -270,7 +270,7 @@ sub GetAccessToken {
     $Kernel::OM->Get('Kernel::System::Cache')->Set(
         Type  => $Self->{CacheType},
         TTL   => ( $Response{expires_in} - 90 ),                     # Add a buffer for latency reasons.
-        Key   => "AccesToken::MailAccount::$Param{MailAccountID}",
+        Key   => "AccessToken::MailAccount::$Param{MailAccountID}",
         Value => $Response{access_token},
     );
 
