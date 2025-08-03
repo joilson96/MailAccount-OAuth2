@@ -110,6 +110,13 @@ sub BuildAuthURL {
         Value => \%Param,
     );
 
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $BaseURL = $ConfigObject->Get('HttpType') . '://' . $ConfigObject->Get('FQDN');
+    my $ScriptAlias = $ConfigObject->Get('ScriptAlias') // '';
+    $ScriptAlias =~ s{/*\/$}{};                                # remove barra final se houver
+    $ScriptAlias = '/' . $ScriptAlias if $ScriptAlias ne '' && $ScriptAlias !~ m{^/};  # adiciona barra inicial
+    my $RedirectURI = $BaseURL . $ScriptAlias . '/index.pl?Action=AdminMailAccount';
+
     my $URL = URI->new( $Param{BaseAuthURL} );
     $URL->query_param_append( 'client_id',     $Param{ClientID} );
     $URL->query_param_append( 'response_type', 'code' );
@@ -117,6 +124,9 @@ sub BuildAuthURL {
     $URL->query_param_append( 'response_mode', 'query' );
     $URL->query_param_append( 'state',         $RandomString );
     $URL->query_param_append( 'login_hint',    $Param{Login} );
+    $URL->query_param_append( 'redirect_uri', $RedirectURI );
+    $URL->query_param_append( 'access_type',  'offline' );
+    $URL->query_param_append( 'prompt',       'consent' );
 
     return $URL->as_string;
 }
@@ -177,9 +187,12 @@ sub _RequestAccessToken {
         $Data{code} = $Param{Code};
 
         my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
-        my $BaseURL = $ConfigObject->Get('HttpType') . '://' . $ConfigObject->Get('FQDN') . $ConfigObject->Get('ScriptAlias');
-        
-        $Data{redirect_uri} = $BaseURL . '/otobo/oauth2/callback';
+        my $BaseURL     = $ConfigObject->Get('HttpType') . '://' . $ConfigObject->Get('FQDN');
+        my $ScriptAlias = $ConfigObject->Get('ScriptAlias') // '';
+        $ScriptAlias    =~ s{/*\/$}{};                                # remove barra final se houver
+        $ScriptAlias    = '/' . $ScriptAlias if $ScriptAlias ne '' && $ScriptAlias !~ m{^/};  # adiciona barra inicial
+        $Data{redirect_uri} = $BaseURL . $ScriptAlias . '/index.pl?Action=AdminMailAccount';
+
     }
     elsif ( $Param{GrantType} eq 'refresh_token' ) {
 
