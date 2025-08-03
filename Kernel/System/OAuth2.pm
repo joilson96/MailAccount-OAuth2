@@ -175,6 +175,11 @@ sub _RequestAccessToken {
     # Add optional parameters.
     if ( $Param{Code} && $Param{GrantType} eq 'authorization_code' ) {
         $Data{code} = $Param{Code};
+
+        my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+        my $BaseURL = $ConfigObject->Get('HttpType') . '://' . $ConfigObject->Get('FQDN') . $ConfigObject->Get('ScriptAlias');
+        
+        $Data{redirect_uri} = $BaseURL . '/otobo/oauth2/callback';
     }
     elsif ( $Param{GrantType} eq 'refresh_token' ) {
 
