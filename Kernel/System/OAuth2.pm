@@ -257,16 +257,16 @@ sub _RequestAccessToken {
     }
 
     # Should not happen if no error message given.
-    if ( !$ResponseData->{access_token} || !$ResponseData->{refresh_token} || !$ResponseData->{expires_in} ) {
+    if ( !$ResponseData->{access_token} || !$ResponseData->{expires_in} ) {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'error',
-            Message  => 'Host did not provide "access_token", "refresh_token" or "expires_in"!',
+            Message  => 'Host did not provide required "access_token" or "expires_in"!',
         );
         return;
     }
-
     # renew refresh token if necessary
-    if ( !$RefreshToken || $RefreshToken ne $ResponseData->{refresh_token} ) {
+#    if ( !$RefreshToken || $RefreshToken ne $ResponseData->{refresh_token} ) {
+    if ( $ResponseData->{refresh_token} && ( !$RefreshToken || $RefreshToken ne $ResponseData->{refresh_token} ) ) {
         $DBObject //= $Kernel::OM->Get('Kernel::System::DB');
 
         # delete old data
